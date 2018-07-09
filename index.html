@@ -69,12 +69,23 @@
         mouseX = (rectCenterX - 160) * (window.innerWidth/320) * 10;
         mouseY = (rectCenterY - 120) * (window.innerHeight/240) * 10;
         //context.clearRect(0, 0, canvas.width, canvas.height);
-        console.log("Magenta!", maxRectArea); //based on how much magenta, change entropy variable
+        //console.log("Magenta!", maxRectArea); //based on how much magenta, change entropy variable
         entropy = ((maxRectArea - 60) / (100000 - 60)) * (0.04) + 1;
+        if (maxRectArea > 100){
+         $("#Title").text("Thank you :)"); 
+        }
+        else if (maxRectArea > 1000){
+          $("#Title").text("Oh wow thank you so much!!!!!!!!!!!!! :)"); 
+        }
+        else{
+          $("#Title").text("Please show me magenta, pleasee"); 
+        }
       }
       else {
           entropy = 1;
+         $("#Title").text("Please show me magenta, pleasee"); 
       }
+      setTimeout(function(){$("#Title").text("Please show me magenta, pleasee")}, 500);
     
     }
      
@@ -113,7 +124,7 @@
         //some fun boxes
 				var geometry = new THREE.BoxBufferGeometry( 20, 20, 20 );
 
-				for ( var i = 0; i < 100; i ++ ) { 
+				for ( var i = 0; i < 200; i ++ ) { 
 
 					var object = new THREE.Mesh( geometry, new THREE.MeshLambertMaterial( { color: Math.random() * 0xf8C078C } ) );
 
@@ -129,7 +140,7 @@
 					object.scale.y = 3*Math.random() + 1;
 					object.scale.z = 3*Math.random() + 1;
 
-					scene.add( object );
+          scene.add( object );
           
           cubes.push(object); 
 
@@ -176,11 +187,11 @@
                 
         
         //mess up the cubes with entropy
-        var timer = Date.now() * 0.00000005*entropy;
+        var timer = Date.now() * 0.0000005*entropy;
         
         for (var i = 0; i < cubes.length; i++){
           cubes[i].position.set(
-            Math.cos( timer * entropy*3 + i*0.5*Math.log(entropy*10) ) * 700/(entropy^3),
+            Math.cos( timer * entropy*3 + (i)*0.5*Math.log(entropy*10) ) * 700/(entropy^3),
             Math.abs( Math.cos( timer * 4*entropy * i ) ) * 1500/(entropy^4) -200,
             Math.sin( timer * 7*entropy + i *2) * 1300/(entropy^2)
           );
