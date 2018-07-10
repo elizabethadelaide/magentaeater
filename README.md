@@ -1,3 +1,5 @@
+![screenshot of fun object][screenshot.png]
+
 # magentaeater
 
 Uses tracking js and three js to create fun object arrangements using object recognition.
