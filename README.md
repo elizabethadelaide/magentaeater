@@ -1,4 +1,4 @@
-![screenshot of fun object][screenshot.png]
+![screenshot of fun object](screenshot.png)
 
 # magentaeater
 
