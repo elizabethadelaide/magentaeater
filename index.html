@@ -70,10 +70,21 @@
         mouseY = (rectCenterY - 120) * (window.innerHeight/240) * 10;
         //context.clearRect(0, 0, canvas.width, canvas.height);
         console.log("Magenta!", maxRectArea); //based on how much magenta, change entropy variable
-        entropy = ((maxRectArea - 60) / (100000 - 60)) * (0.04) + 1;
+        entropy = ((maxRectArea - 60) / (1000000000 - 60)) * (0.04) + 1;
+        if (maxRectArea > 10000){
+          $("#Title").text("Oh wow thank you so much!!!!!!!!!!!!! :)"); 
+        }
+        else if (maxRectArea > 100){
+         $("#Title").text("Thank you :)"); 
+        }
+        else{
+          $("#Title").text("Please show me magenta, pleasee"); 
+        }
       }
       else {
           entropy = 1;
+          setTimeout(function(){$("#Title").text("Please show me magenta, pleasee")}, 500);
+
       }
     
     }
@@ -164,7 +175,7 @@
 
 			}
 
-		
+		  var timer = 0;
   
 			function animate() {
 
@@ -176,7 +187,8 @@
                 
         
         //mess up the cubes with entropy
-        var timer = Date.now() * 0.00000005*entropy;
+        timer = Date.now() * 0.0000005*entropy;
+        //timer = timer + 0.00001*entropy;
         
         for (var i = 0; i < cubes.length; i++){
           cubes[i].position.set(
